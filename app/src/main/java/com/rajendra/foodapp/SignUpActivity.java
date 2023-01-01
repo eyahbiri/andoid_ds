@@ -28,7 +28,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 EditText firstNameValue = (EditText) findViewById(R.id.firstNameValueSignUp);
                 EditText lastNameValue = (EditText) findViewById(R.id.lastNameValueSignUp);
-                EditText phoneNumberValue = (EditText) findViewById(R.id.firstNameValueSignUp);
+                EditText phoneNumberValue = (EditText) findViewById(R.id.phoneNumberValueSignUp);
                 EditText passwordValue = (EditText) findViewById(R.id.passwordValueSIgnup);
                 TextView errorMessageValue = (TextView) findViewById(R.id.errorMessageSignUp);
                 Boolean valid = Boolean.FALSE;
@@ -51,8 +51,14 @@ public class SignUpActivity extends AppCompatActivity {
 
                     dbUser.close();
                     if(res>0){
+
                         errorMessageValue.setText("Cette utilisateur exist déja");
                     }else{
+                        firstNameValue.setText("");
+                        lastNameValue.setText("");
+                        phoneNumberValue.setText("");
+                        passwordValue.setText("");
+                        errorMessageValue.setText("");
                         User newUser = new User(firstNameValue.getText().toString(),
                                 lastNameValue.getText().toString(),
                                 phoneNumberValue.getText().toString(),
@@ -61,7 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
                         Dbuser dbuser = new Dbuser(getApplicationContext());
                         dbuser.open();
                         dbuser.insertUser(newUser);
-                        dbuser.close();
+                        //dbuser.close();
                         Intent intentSignUpActivity = new Intent(SignUpActivity.this,HomeActivity.class);
                         startActivity(intentSignUpActivity);
                         finish();

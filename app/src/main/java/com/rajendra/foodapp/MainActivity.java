@@ -50,12 +50,15 @@ public class MainActivity extends AppCompatActivity {
                     valid=Boolean.TRUE;
                 }
                 if(valid){
+
                     Dbuser dbUser = new Dbuser(getApplicationContext());
                     dbUser.open();
                     int res = dbUser.getUserWithlog(phoneNumberValue.getText().toString(),passwordValue.getText().toString());
 
-                    dbUser.close();
+                    //dbUser.close();
                     if(res>0){
+                        phoneNumberValue.setText("");
+                        passwordValue.setText("");
                         Intent intentSignUpActivity = new Intent(MainActivity.this,HomeActivity.class);
                         startActivity(intentSignUpActivity);
                         finish();

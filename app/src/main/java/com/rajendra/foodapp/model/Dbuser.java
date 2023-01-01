@@ -20,7 +20,7 @@ public class Dbuser {
     private static final int NUM_COL_Last_Name = 2;
     private static final String COL_PHONENUMBER = "phoneNumber";
     private static final int NUM_COL_PHONENUMBER = 3;
-    private static final String COL_Password = "pwd";
+    private static final String COL_Password = "password";
     private static final int NUM_COL_Password = 4;
 
 
